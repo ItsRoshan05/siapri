@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,10 @@ Route::get('/register', [AuthController::class, 'showRegistrationForm'])
 Route::post('/register', [AuthController::class, 'register'])
     ->name('register.post');
 
+
+
+Route::resource('users',UsersController::class)->middleware('auth');
+    
 // Formulir Login Pengguna
 Route::get('/login', [AuthController::class, 'showLoginForm'])
     ->name('login');
